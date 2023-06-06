@@ -24,11 +24,11 @@ export function NewTodoForm(props){
     return (
         <form onSubmit={handleSubmit} className="new-item-form">
             <div className="form-row">
-                <label htmlFor="item">New Item</label>
+                {/* <label htmlFor="item">New Item</label> */}
                 <input value={newitem} 
                 onChange={e => setNewItem(e.target.value)} 
                 type="text" id="item" />
-                <button className="btn">Add</button>
+                <button className="btn btn-add">Add</button>
             </div>
         </form>
     )

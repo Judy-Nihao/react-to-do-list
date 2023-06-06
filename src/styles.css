@@ -1,107 +1,129 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
   
+
   body {
-    background: hsl(0, 0%, 86%);
+    background: hsl(0, 0%, 85%);
     color: hsl(200, 100%, 90%);
-    max-width: 400px;
-    padding: 1rem;
     margin: 0 auto;
     color: hsl(0, 0%, 15%);
   }
+
+  .container{
+    max-width: 500px;
+    width: 80%;
+    margin: 0 auto;
+  }
   
   .new-item-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    margin-bottom: 1rem;
   }
   
-  .form-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .btn {
-    background: hsl(200, 100%, 50%, 0.1);
-    border: 1px solid hsl(200, 100%, 50%);
-    color: hsl(200, 100%, 50%);
-    padding: 0.25em 0.5em;
-    border-radius: 0.25em;
-    cursor: pointer;
+    
+  .form-row input {
+    width: 100%;
     outline: none;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    background-color: hsl(0, 0%, 94%);
+    border-radius: 0.25rem 0.25rem 0 0;
+    color: hsl(0, 0%, 0%);
+  }
+  
+  .form-row input:focus {
+    border: 1px solid hsl(210, 100%, 56%);
+  }
+
+  .btn {
+    /* 消除空隙 */
+    display: block; 
+    outline: none;
+    border: none;
+    background-color:hsl(200, 100%, 50%);
+    color: hsl(0, 0%, 100%);
+    font-size: 1.25rem;
+    padding: 10px 0;
+    border-radius: 0 0 0.25rem 0.25rem;
+    cursor: pointer;
   }
   
   .btn:hover,
   .btn:focus-visible {
-    /* background: hsl(200, 100%, 50%, 0.2); */
-    background: hsl(200, 100%, 50%);
+    background-color: hsl(210, 100%, 25%);
     color: hsl(0, 0%, 100%);
   }
-  
-  .btn.btn-danger {
-    background: hsl(0, 100%, 40%, 0.1);
-    border: 1px solid hsl(0, 100%, 40%);
-    color: hsl(0, 100%, 40%);
+
+  .btn.btn-add{
+    width: 100%;
+    transition: font-size 0.15s linear, background-color 0.15s ease-out;
   }
-  
-  .btn.btn-danger:hover,
-  .btn.btn-danger:focus-visible {
-    background: hsl(0, 100%, 40%, 0.2);
-  }
-  
-  .new-item-form input {
-    outline: none;
-    /* border: 1px solid hsl(200, 100%, 40%); */
-    border: none;
-    background: hsl(0, 0%, 94%);
-    border-radius: 0.25em;
-    padding: 0.25em 0.5em;
-    color: hsl(0, 0%, 0%);
-  }
-  
-  .new-item-form input:focus {
-    border: 1px solid hsl(189, 97%, 42%);
-  }
-  
-  .header {
+
+  .btn.btn-add:active{
     font-size: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+  }
+
+  .header {
+    text-align: center;
+    font-size: 1.75rem;
+    margin: 1.5rem 0;
   }
   
   .no-todos{
-    color: seagreen;
+    color: hsl(200, 100%, 50%);
   }
+
+
+
+  /* 清單項目 */
+
+  .btn.btn-delete {
+    padding: 4px 6px;
+    background: transparent;
+    color: hsl(0, 0%, 0%);
+    transition: color 0.1s ease-out, scale 0.1s ease-out;
+  }
+  
+  .btn.btn-delete:hover,
+  .btn.btn-delete:focus-visible {
+    color: hsl(15, 94%, 48%);
+    scale: 1.15;
+  }
+
 
   .list {
     margin: 0;
     padding: 0;
-    margin-left: 1rem;
+    margin-left: 0;
     list-style: none;
   }
   
-  .list li:has(input:checked) label {
-    color: hsl(121, 33%, 52%);
-  }
-  
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+  .list li:has(input:checked) label span{
+    color: hsl(0, 0%, 55%);
+    text-decoration:line-through;
   }
   
   .list li {
     display: flex;
-    gap: 0.5rem;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5rem;
+    transition: color 0.1s ease;
+  }
+
+  .list li:hover{
+    color: hsl(200, 100%, 50%);
   }
   
   .list li label {
     display: flex;
-    gap: 0.25rem;
+    width: 100%;
+    font-size: 1.25rem;
+    gap: 1rem;
     cursor: pointer;
     align-items: center;
   }
@@ -110,21 +132,23 @@
     outline: 1px solid hsl(200, 100%, 50%);
   }
   
+  /* 隱藏預設的 checkbox  */
   .list li input {
+    position: absolute;
     outline: none;
     width: 0;
     height: 0;
     appearance: none;
     pointer-events: none;
-    position: absolute;
   }
   
+  /* 客製化 checkbox */
   .list li label::before {
     content: "";
     display: block;
-    width: 0.9rem;
-    height: 0.9rem;
-    background: hsl(200, 100%, 90%);
+    width: 1.25rem;
+    height: 1.25rem;
+    background: hsl(0, 0%, 93%);
     border-radius: 0.25em;
     display: flex;
     justify-content: center;
@@ -147,3 +171,8 @@
     background: hsl(200, 100%, 30%);
   }
   
+
+  @media screen and (max-width: 560px) {
+
+  
+  }

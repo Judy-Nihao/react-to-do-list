@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
+// icon
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 import { NewTodoForm } from "./NewTodoForm";
 import { TodoList } from "./TodoList";
 import "./styles.css";
+
+library.add(fas, far);
 
 
 
@@ -56,9 +62,11 @@ export default function App(){
 
   return (
     <>
-      <NewTodoForm onSubmit={addTodo}/>
-      <h1 className="header">To Do List</h1>
-      <TodoList todos={todos} toggleTodo={toggleTodo}  deleteTodo={deleteTodo}/>
+      <div className="container">
+        <h1 className="header">A React To Do List</h1>
+        <NewTodoForm onSubmit={addTodo}/>
+        <TodoList todos={todos} toggleTodo={toggleTodo}  deleteTodo={deleteTodo}/>
+      </div>
     </>
   )
 }
