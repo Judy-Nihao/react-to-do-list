@@ -1,5 +1,6 @@
 // 記得 import useState
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // 元件名稱字首大寫
 // 注意括號內要代入 props。這邊的 props 是一個物件
@@ -25,10 +26,11 @@ export function NewTodoForm(props){
         <form onSubmit={handleSubmit} className="new-item-form">
             <div className="form-row">
                 {/* <label htmlFor="item">New Item</label> */}
-                <input value={newitem} 
+                <input placeholder="請輸入待辦事項..."
+                value={newitem} 
                 onChange={e => setNewItem(e.target.value)} 
                 type="text" id="item" />
-                <button className="btn btn-add">Add</button>
+                <button className="btn btn-add">add <FontAwesomeIcon icon="fa-regular fa-square-plus" /></button>
             </div>
         </form>
     )
