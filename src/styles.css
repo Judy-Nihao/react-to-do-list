@@ -41,12 +41,7 @@
     background-color: transparent;
     margin-bottom: 1rem;
   }
-
-  /* .form-row{
-    
-  } */
-  
-    
+      
   /* border 要設定同樣粗度和給一個顏色，給透明色，focus 時才能淡入 */
   .form-row input {
     width: 100%;
@@ -88,8 +83,11 @@
     transition: font-size 0.15s linear, background-color 0.15s ease-out;
   }
 
-  .btn.btn-add:hover{
-    color: hsl(226, 98%, 61%);
+  /* 電腦版才有 hover */
+  @media (any-hover: hover) {
+    .btn.btn-add:hover{
+      color: hsl(226, 98%, 61%);
+    }
   }
 
   .btn.btn-add:active{
@@ -110,17 +108,16 @@
     transition: color 0.1s ease-out, scale 0.1s ease-out;
   }
   
-  .btn.btn-delete:hover,
-  .btn.btn-delete:focus-visible {
-    color: hsl(15, 94%, 48%);
-    scale: 1.15;
-  }
+
+  @media (any-hover: hover) {
+    .btn.btn-delete:hover{
+      color: hsl(15, 94%, 48%);
+      scale: 1.15;
+    }
+  }  
 
 
   .list {
-    /* margin: 0;
-    padding: 0;
-    margin-left: 0; */
     list-style: none;
   }
   
@@ -138,8 +135,10 @@
     transition: color 0.1s ease;
   }
 
-  .list li:hover{
-    color: hsl(200, 100%, 50%);
+  @media (any-hover: hover) {
+    .list li:hover{
+      color: hsl(200, 100%, 50%);
+    }
   }
 
   .list li:active{
@@ -182,10 +181,15 @@
     align-items: center;
   }
   
-  .list li label:hover::before {
-    background: hsl(200, 100%, 80%);
+
+  /* 尚未打勾時的 hover 時顏色，電腦版才有 hover */
+  @media (any-hover: hover) {
+    .list li label:hover::before {
+      background: hsl(200, 100%, 80%);
+    }
   }
   
+  /* 已打勾後變色 */
   .list li:has(input:checked) label::before {
     content: "✔";
     background: hsl(200, 100%, 40%);
@@ -194,10 +198,13 @@
     font-weight: bold;
   }
   
-  .list li:has(input:checked) label:hover::before {
-    background: hsl(200, 100%, 30%);
+    /* 已打勾狀態下的 hover  */
+  @media (any-hover: hover) {
+    .list li:has(input:checked) label:hover::before {
+      background: hsl(200, 100%, 30%);
+    }
   }
-
+  
   /* clear 按鈕的父層 div */
   .container div:has(.clear){
     margin-top: 1rem;
@@ -217,10 +224,13 @@
   }
 
 
-  .clear:hover{
-    color: hsl(0, 0%, 100%);
-    background-color: hsl(186, 100%, 42%);
+  @media (any-hover: hover) {
+    .clear:hover{
+      color: hsl(0, 0%, 100%);
+      background-color: hsl(186, 100%, 42%);
+    }
   }
+
 
   .clear:active{
     color: hsl(0, 0%, 100%);

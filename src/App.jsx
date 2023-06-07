@@ -37,7 +37,7 @@ export default function App(){
   function addTodo(inputContent){  
         setTodos((currentTodos)=>{
           return [...currentTodos,{
-            id: crypto.randomUUID(),
+            id: new Date().getTime(),
             title: inputContent,
             completed: false
           }]
