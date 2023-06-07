@@ -16,7 +16,7 @@ export function TodoItem({completed, id, title, toggleTodo, deleteTodo }){
             <button 
             onClick={() => deleteTodo(id)} 
             className="btn btn-delete"
-            ><FontAwesomeIcon icon="fa-solid fa-trash" /></button>
+            ><FontAwesomeIcon icon="fa-regular fa-trash-can" /></button>
         </li>
     )
 };

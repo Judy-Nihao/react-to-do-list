@@ -1,39 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
 
 * {
-    font-family: "Noto Sans TC", sans-serif;
+    font-family: "Poppins", "Noto Sans TC", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
+  html{
+    width: 100%;
+  }
 
   body {
-    margin: 0 auto;
-    background-color: #00BED5;
+    width: 100%;
+    background-color: hsl(186, 100%, 42%);
   }
 
   .container{
-    max-width: 500px;
-    width: 80%;
+    max-width: 450px;
+    width: 85%;
     margin: 0 auto;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: 0 0 40px 0 rgba(0,0,0,.1);
+    
+  }
+
+  .header {
+    text-align: center;
+    font-size: 1.5rem;
+    color: hsl(0, 0%, 30%);
+    font-weight: 400;
+    margin-bottom: 1.25rem;
   }
   
   .new-item-form {
+    position: relative;
+    background-color: transparent;
     margin-bottom: 1rem;
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
   }
+
+  /* .form-row{
+    
+  } */
   
     
+  /* border 要設定同樣粗度和給一個顏色，給透明色，focus 時才能淡入 */
   .form-row input {
     width: 100%;
     outline: none;
-    border: none;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    background-color: hsl(0, 0%, 100%);
-    border-radius: 0.25rem 0.25rem 0 0;
+    border: 1px solid transparent;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: hsl(0, 0%, 95%);
+    border-radius: 0.5rem;
     color: hsl(0, 0%, 0%);
+    transition: border 0.5s;
   }
 
   .form-row input::placeholder { 
@@ -41,7 +65,7 @@
   }
   
   .form-row input:focus {
-    border: 1px solid hsl(210, 100%, 56%);
+    border: 1px solid hsl(186, 100%, 42%);
   }
 
   .btn {
@@ -49,50 +73,40 @@
     display: block; 
     outline: none;
     border: none;
-    color: hsl(0, 0%, 100%);
-    background-color: hsl(210, 100%, 25%);
-    font-size: 1.25rem;
-    padding: 10px 0;
-    border-radius: 0 0 0.25rem 0.25rem;
+    background-color: transparent;
     cursor: pointer;
-  }
-  
-  .btn:hover,
-  .btn:focus-visible {
-    background-color: #3966FD;
-    color: hsl(0, 0%, 100%);
   }
 
   .btn.btn-add{
-    width: 100%;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 1.25rem;
+    font-size: 1.5rem;
+    color: hsl(186, 100%, 42%);
     transition: font-size 0.15s linear, background-color 0.15s ease-out;
   }
 
+  .btn.btn-add:hover{
+    color: hsl(226, 98%, 61%);
+  }
+
   .btn.btn-add:active{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
-  .header {
-    text-align: center;
-    font-size: 2.5rem;
-    margin: 1.5rem 0;
-    color: hsl(200, 100%, 50%);
-    color: white;
-    font-weight: 700;
-  }
-  
   .no-todos{
-    color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 30%);
   }
-
-
 
   /* 清單項目 */
 
   .btn.btn-delete {
-    padding: 4px 6px;
     background: transparent;
-    color: hsl(0, 0%, 0%);
+    padding: 4px 6px;
+    font-size: 1rem;
+    color: hsl(0, 0%, 50%);
     transition: color 0.1s ease-out, scale 0.1s ease-out;
   }
   
@@ -104,9 +118,9 @@
 
 
   .list {
-    margin: 0;
+    /* margin: 0;
     padding: 0;
-    margin-left: 0;
+    margin-left: 0; */
     list-style: none;
   }
   
@@ -119,11 +133,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
-    padding: 0.75rem;
-    border-radius: 0.25em;
-    background-color: hsl(0, 0%, 100%);
-    box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.1);
+    padding: 0.5rem 0.25rem;
+    border-bottom: 1px solid hsl(0, 0%, 90%);
     transition: color 0.1s ease;
   }
 
@@ -144,18 +155,18 @@
     align-items: center;
   }
   
-  .list li:has(input:focus-visible) label {
-    outline: 1px solid hsl(200, 100%, 50%);
-  }
-  
-  /* 隱藏預設的 checkbox  */
+  /* 隱藏預設的 checkbox 樣式 */
   .list li input {
     position: absolute;
     outline: none;
     width: 0;
     height: 0;
-    appearance: none;
     pointer-events: none;
+    appearance: none;
+  }
+
+  .list li span{
+    font-size: 1rem;
   }
   
   /* 客製化 checkbox */
@@ -186,9 +197,37 @@
   .list li:has(input:checked) label:hover::before {
     background: hsl(200, 100%, 30%);
   }
-  
 
-  @media screen and (max-width: 560px) {
+  /* clear 按鈕的父層 div */
+  .container div:has(.clear){
+    margin-top: 1rem;
+  }
 
-  
+  .clear{
+    border: 1px solid  hsl(186, 100%, 42%);
+    border-radius: 0.5rem;
+    color: hsl(186, 100%, 42%);
+    background-color: transparent;
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    width: 48%;
+    margin-right: 4%;
+    cursor: pointer;  
+    transition: all 0.2s ease-out;
+  }
+
+
+  .clear:hover{
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(186, 100%, 42%);
+  }
+
+  .clear:active{
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(186, 100%, 42%);
+    font-size: 1rem;
+  }
+
+  .clear.all{
+    margin-right: 0;
   }
